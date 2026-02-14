@@ -1,0 +1,22 @@
+﻿a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 10pt;
+}
+
+.nav-login {
+}
+
+.nav-login img {
+    height: 19px;
+}
+
+@media (max-width: 641px) {
+    .nav-login {
+        display: none;
+    }
+
+    .logo-span {
+        font-size: 15pt;
+    }
+}
