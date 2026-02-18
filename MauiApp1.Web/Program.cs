@@ -1,12 +1,26 @@
 using MauiApp1.Shared.Services;
 using MauiApp1.Web.Components;
 using MauiApp1.Web.Services;
+using Microsoft.AspNetCore.Http.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+// Add HttpClient for components that need it
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped(sp =>
+{
+    var httpContextAccessor = sp.GetRequiredService<IHttpContextAccessor>();
+    var request = httpContextAccessor.HttpContext?.Request;
+    var baseAddress = request != null 
+        ? $"{request.Scheme}://{request.Host}/" 
+        : "http://localhost:5000/";
+
+    return new HttpClient { BaseAddress = new Uri(baseAddress) };
+});
 
 // Add device-specific services used by the MauiApp1.Shared project
 builder.Services.AddSingleton<IFormFactor, FormFactor>();

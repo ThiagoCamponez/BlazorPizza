@@ -7,5 +7,5 @@
   <Project Path="MauiApp1/MauiApp1.csproj">
     <Deploy Solution="Debug|*" />
   </Project>
-  <Project Path="RclOrdering/RclOrdering.csproj" Id="6b528cac-6807-4daf-9610-25ce17febd8b" />
+  <Project Path="RclOrdering/RclOrdering.csproj" Id="c41dfa94-4379-4497-a2aa-02649a29d4dc" />
 </Solution>

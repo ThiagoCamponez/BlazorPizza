@@ -65,6 +65,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MauiApp1.Shared\MauiApp1.Shared.csproj" />
+    <ProjectReference Include="..\RclOrdering\RclOrdering.csproj" />
   </ItemGroup>
 
 </Project>
