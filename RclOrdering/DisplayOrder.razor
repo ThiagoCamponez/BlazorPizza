@@ -1,23 +1,29 @@
 ﻿@inject HttpClient Http
-<h3 style ="color: white">Display Order Component</h3>
 
-<div>
-    <div class="container-display-order">
-        <span>@Orders[1].Amount</span>
-        <span>@Orders[2].Itens.Count Itens</span>
+<div class="container-display-order">
+    <div class="div-amount">
+        <span>R$ @Amount</span>
+        <span>@Itens Itens</span>
     </div>
-    <div>
-        <span>
-            <img src="_content/MauiApp1.Shared/imagens/icoentrega.png" />
-        </span>
+    <div class="div-amount">
+        <img src="_content/MauiApp1.Shared/imagens/icoentrega.png" />
     </div>
 </div>
 
 @code {
     private List<OrderDto>? Orders = new List<OrderDto>();
 
+    private decimal Amount { get; set; }
+
+    private int Itens { get; set; }
+
     protected override async Task OnInitializedAsync()
     {
-        Orders = await Http.GetFromJsonAsync<List<OrderDto>>("_content/MauiApp1.Shared/sample-data/pedidos.json");   
+        Orders = await Http.GetFromJsonAsync<List<OrderDto>>(
+            "_content/MauiApp1.Shared/sample-data/pedidos.json");
+
+        Amount = Orders![1].Amount;
+
+        Itens = Orders![1].Itens!.Count;
     }
 }

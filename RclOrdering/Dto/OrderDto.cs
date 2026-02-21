@@ -20,7 +20,7 @@ namespace RclOrdering.Dto
         public float Tax { get; set; }
 
         [JsonPropertyName("amount")]
-        public float Amount { get; set; }
+        public decimal Amount { get; set; }
 
     }
 }
