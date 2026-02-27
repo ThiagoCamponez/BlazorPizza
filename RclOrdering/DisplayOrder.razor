@@ -1,4 +1,5 @@
-﻿@inject HttpClient Http
+﻿
+@inject IOrderingRestServices _services
 
 <div class="container-display-order">
     <div class="div-amount">
@@ -19,8 +20,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        Orders = await Http.GetFromJsonAsync<List<OrderDto>>(
-            "_content/MauiApp1.Shared/sample-data/pedidos.json");
+        Orders = await _services.GetAll();
 
         Amount = Orders![1].Amount;
 

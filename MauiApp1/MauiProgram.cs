@@ -1,6 +1,8 @@
 ﻿using MauiApp1.Services;
 using MauiApp1.Shared.Services;
 using Microsoft.Extensions.Logging;
+using RclOrdering.Services;
+using RclOrdering.Services.Interfaces;
 
 namespace MauiApp1
 {
@@ -25,7 +27,7 @@ namespace MauiApp1
             builder.Services.AddBlazorWebViewDeveloperTools();
             builder.Logging.AddDebug();
 #endif
-
+            builder.Services.AddScoped<IOrderingRestServices, OrderingRestServices>();
             return builder.Build();
         }
     }

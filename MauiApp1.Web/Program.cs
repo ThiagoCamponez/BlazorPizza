@@ -2,6 +2,8 @@ using MauiApp1.Shared.Services;
 using MauiApp1.Web.Components;
 using MauiApp1.Web.Services;
 using Microsoft.AspNetCore.Http.Extensions;
+using RclOrdering.Services;
+using RclOrdering.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +26,8 @@ builder.Services.AddScoped(sp =>
 
 // Add device-specific services used by the MauiApp1.Shared project
 builder.Services.AddSingleton<IFormFactor, FormFactor>();
+
+builder.Services.AddScoped<IOrderingRestServices, OrderingRestServices>();
 
 var app = builder.Build();
 
